@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t klyners/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true klyners/docker-react npm run test
